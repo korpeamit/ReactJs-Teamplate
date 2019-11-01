@@ -72,10 +72,34 @@ const initState = {
     ],
     //name: teamData[0].name
     selectedObj:{},
-    name: '',
-    password: '',
-    phoneNo: '',
-    selectedOption: 'male'
+    // Select HTML Markup
+
+    htmlMarkup : [
+        {
+            id: 1,
+            name: 'Player Listing',
+            html: 'HTML',
+            css: 'CSS'
+        },
+        {
+            id: 2,
+            name: 'Filter Popup',
+            html: 'HTML',
+            css: 'CSS'
+        },
+        {
+            id: 3,
+            name: 'Success Popup',
+            html: 'HTML',
+            css: 'CSS'
+        },
+        {
+            id: 4,
+            name: 'Error Popup',
+            html: 'HTML',
+            css: 'CSS'
+        },
+    ]
 }
 
 const routeReduser = (state = initState, action) =>{
