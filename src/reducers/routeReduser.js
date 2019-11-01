@@ -17,8 +17,8 @@ const initState = {
             "name": "England",
             "continent": "Europe",
             "population": "37 Million",
-            "color": "white",
-            "textColor": "black",
+            "color": "gray",    
+            "textColor": "white",
             "id": 2
         },
         {
@@ -71,25 +71,33 @@ const initState = {
         }
     ],
     //name: teamData[0].name
+    selectedObj:{},
+    name: '',
+    password: '',
+    phoneNo: '',
+    selectedOption: 'male'
 }
 
 const routeReduser = (state = initState, action) =>{
-    if( action.type === "DELETE_POST") { // step 6
+    console.log(action);
+    if(action.type === "DELETE_POST"){
         let newPost = state.posts.filter(post =>{
             return action.id !== post.id
-        })
+        });
         return{
             ...state,
-            posts : newPost
+            posts: newPost
         }
     }
+
     if(action.type === "SELECT_OPTION"){
-        // console.log(state.selectValue);
+        console.log("action",action);
         return{
             ...state,
-            name : action.name
+            selectedObj: action.obj
         }
     }
+
     return state;  // step 3 then move to component
 }
 

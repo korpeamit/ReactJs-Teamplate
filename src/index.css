@@ -31,6 +31,7 @@ ul{
   justify-content: flex-start;
   flex-direction: column;
 }
-.dropdownList select, .card select{
+.dropdownList select, .card select,.section select{
   display: block
 }
+.mt-30{margin-top: 30px;}

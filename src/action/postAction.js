@@ -6,10 +6,9 @@ export const deletePost = (id) =>{
     }
 }
 
-export const selectOption = (name) =>{
-    // console.log('Selected Option', name);
+export const selectOption = (obj) =>{
     return{
         type: 'SELECT_OPTION',
-        name
+        obj
     }
 }

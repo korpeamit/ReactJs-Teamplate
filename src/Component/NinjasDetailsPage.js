@@ -1,57 +1,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deletePost } from '../action/postAction';
-
+import { deletePost }  from '../action/postAction'
 class NinjasDetailsPage extends Component {
     deletePost = () =>{
         this.props.deletePost(this.props.posts.id);
-        this.props.history.push('/ninjas')
+        this.props.history.push('/Ninjas')
     }
     render() {
-        // console.log(this.props);
-        const playerInfo = this.props.posts ? (
-            <div className="container">
-                <div className="card">
-                    <div className="card-content">
-                        <span className="card-title">Name: {this.props.posts.name}</span>
-                        <p className="left blue-text">UserName: {this.props.posts.username}</p><br />
-                        <div className="center">
-                            <button className="btn red" onClick={this.deletePost}>Delete Post</button>
-                        </div>
+        console.log(this.props)
+        const postInfoList = this.props.posts ? (
+
+            <div className="card">
+                <div className="card-content">
+                    <span className="card-title"><b>Name:</b> {this.props.posts.name}</span>
+                    <p><b>UserName:</b> {this.props.posts.username}</p>
+                    <div className="center">
+                        <button className="btn red" onClick={this.deletePost}>Delete Post</button>
                     </div>
                 </div>
             </div>
-        ) : (
-                <h1 className="center blue-text">Loding.....</h1>
-            )
+
+        ):
+        (
+            <p className="red-text center">Loding....</p>
+        )
         return (
-            <div>
-                {playerInfo}
+            <div className="container">
+                {postInfoList}
             </div>
+
         )
     }
 }
 
-const mapStateToProps = (state, ownProps) => { // step 4
-    
+const mapStateToProps = (state, ownProps) => {
     let id = ownProps.match.params.post_id;
-    // console.log(id);
-    return{
+    // console.log(id)
+    return {
         posts: state.posts.find(posts => posts.id == id)
     }
-    // return {
-    //     posts : state.posts.find(post =>{
-    //         return (
-    //             post.id === id
-    //         )
-    //     })
-    // }
 }
 
-const mapDispatchProps = (dispatch) =>{ //step 5
+const mapDispatchToProps = (dispatch)=>{
     return{
-        deletePost : (id) => { dispatch(deletePost(id)) } // <== when using action folder //deletPost : (id) => { dispatch({type: 'DELETE_POST', id: id}) }
+        deletePost: (id) => {dispatch(deletePost(id))}
     }
 }
 
-export default connect(mapStateToProps, mapDispatchProps)(NinjasDetailsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(NinjasDetailsPage);
