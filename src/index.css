@@ -51,5 +51,45 @@ ul{
   color: #fff;
   border-radius: 10px;
   padding: 5px 10px;
+}
+.si-title{
+  color: 'red'
+}
 
+@keyframes popup_open{
+  from{
+    bottom: -100px
+  }
+  to{
+    bottom: 0px
+  }   
+}
+@keyframes popup_close{
+  from{
+    bottom: 0px
+  }    
+  to{
+    bottom: -100px
+  }
+}
+#popup{
+  width: 100%;
+  padding: 10px;
+  z-index: 20;
+  background: #fff;
+  border-top: 1px solid #444;
+  position: fixed;
+  bottom: -100%;
+  left: 0px;
+  text-align: center;
+}
+.popup-open{
+  animation: popup_open cubic-bezier(0.23, 1, 0.32, 1) 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+}
+.popup-close{
+  animation: popup_close cubic-bezier(0.23, 1, 0.32, 1) 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
 }

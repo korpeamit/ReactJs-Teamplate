@@ -1,8 +1,8 @@
 const initState = {
-    posts: [ 
-        {"id": 1, "name": "Leanne Graham", "username": "Bret",  "email": "Sincere@april.biz"},
-        {"id": 2, "name": "Ervin Howell", "username": "Antonette",  "email": "Shanna@melissa.tv"},
-        {"id": 3, "name": "Clementine Bauch", "username": "Samantha",  "email": "Nathan@yesenia.net"}
+    posts: [
+        { "id": 1, "name": "Leanne Graham", "username": "Bret", "email": "Sincere@april.biz" },
+        { "id": 2, "name": "Ervin Howell", "username": "Antonette", "email": "Shanna@melissa.tv" },
+        { "id": 3, "name": "Clementine Bauch", "username": "Samantha", "email": "Nathan@yesenia.net" }
     ],
     teamData: [
         {
@@ -17,7 +17,7 @@ const initState = {
             "name": "England",
             "continent": "Europe",
             "population": "37 Million",
-            "color": "gray",    
+            "color": "gray",
             "textColor": "white",
             "id": 2
         },
@@ -71,15 +71,15 @@ const initState = {
         }
     ],
     //name: teamData[0].name
-    selectedObj:{},
+    selectedObj: {},
     // Select HTML Markup
 
-    htmlMarkup : [
+    htmlMarkup: [
         {
-            id: 1,
-            name: 'Player Listing',
-            html: 'HTML',
-            css: 'CSS'
+            "id": 1,
+            "name": "Player Listing",
+            "html": "<h2 class=\"si-title\">Player List<\/h2><p class=\"si-para\">we are pioneer in providing consulting, developing and supporting complex IT solution<\/p>",
+            "css": ".si-title:{color:\"red\"}.si-para{color:\"green\";fontSize:16px}"
         },
         {
             id: 2,
@@ -99,28 +99,45 @@ const initState = {
             html: 'HTML',
             css: 'CSS'
         },
-    ]
+    ],
+    selectedMarkupOption: {},
+    value: '',
+    copied: false,
 }
 
-const routeReduser = (state = initState, action) =>{
-    console.log(action);
-    if(action.type === "DELETE_POST"){
-        let newPost = state.posts.filter(post =>{
+const routeReduser = (state = initState, action) => {
+    if (action.type === "DELETE_POST") {
+        let newPost = state.posts.filter(post => {
             return action.id !== post.id
         });
-        return{
+        return {
             ...state,
             posts: newPost
         }
     }
 
-    if(action.type === "SELECT_OPTION"){
-        console.log("action",action);
-        return{
+    if (action.type === "SELECT_OPTION") {
+        return {
             ...state,
             selectedObj: action.obj
         }
     }
+
+    if (action.type === "SELECT_MARKUP_OPTION") {
+        return {
+            ...state,
+            selectedMarkupOption: action.object
+        }
+    }
+
+   if(action.type === "COPY_TEXT"){
+        // console.log("action",action);
+
+       return{
+           ...state,
+           copied: action.status
+       }
+   }
 
     return state;  // step 3 then move to component
 }

@@ -6,14 +6,14 @@ class SelectMarkupOption extends Component {
         const optionListing = htmlMarkupData.length ? (
             htmlMarkupData.map((data,i) =>{
                 return(
-                    <option key={i}>{data.name}</option>
+                    <option key={i} value={i}>{data.name}</option>
                 )
             })
         ) : (
             <option>No Data</option>
         )
         return (
-            <select>
+            <select onChange={this.props.handleChange}>
                 {optionListing}
             </select>
         )   

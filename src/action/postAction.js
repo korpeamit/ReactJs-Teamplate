@@ -12,3 +12,17 @@ export const selectOption = (obj) =>{
         obj
     }
 }
+
+export const handleChange = (object) =>{
+    return{
+        type: 'SELECT_MARKUP_OPTION',
+        object
+    }
+}
+
+export const copyText = (status) =>{
+    return{
+        type: 'COPY_TEXT',
+        status: status
+    }
+}
